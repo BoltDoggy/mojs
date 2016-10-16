@@ -1,0 +1,45 @@
+lib:
+  ✔ burst @done (16-10-16 15:26)
+  ✔ h @done (16-10-16 15:26)
+  ✔ html @done (16-10-16 15:26)
+  ✔ module @done (16-10-16 15:26)
+  ☐ mojs/index
+  ✔ motion-path @done (16-10-16 15:26)
+  ✔ shape-swirl @done (16-10-16 15:26)
+  ✔ shape @done (16-10-16 15:26)
+  ✔ spriter @done (16-10-16 15:26)
+  ✔ stagger @done (16-10-16 15:26)
+  ✔ thenable @done (16-10-16 15:26)
+  ✔ tunable @done (16-10-16 15:26)
+
+  delta:
+    ✔ delta @done (16-10-16 15:26)
+    ✔ deltas @done (16-10-16 15:26)
+  easing:
+    ✔ approximate @done (16-10-16 15:35)
+    ✔ bezier-easing @done (16-10-16 15:26)
+    ☐ easing
+    ☐ mix
+    ✔ path-easing @done (16-10-16 15:36)
+  polyfills:
+    ✔ performance @done (16-10-16 15:34)
+    ✔ raf @done (16-10-16 15:34)
+  shapes:
+    ✔ bit @done (16-10-16 15:38)
+    ☐ circle
+    ☐ cross
+    ✔ curve @done (16-10-16 15:38)
+    ✔ custom @done (16-10-16 15:38)
+    ☐ equal
+    ☐ line
+    ☐ polygon
+    ☐ react
+    ☐ shapesMap
+    ☐ zigzag
+  tween:
+    ✔ timeline @done (16-10-16 15:26)
+    ✔ tween @done (16-10-16 15:26)
+    ✔ tweenable @done (16-10-16 15:26)
+    ✔ tweener @done (16-10-16 15:26)
+  vendor:
+    ✔ resize @done (16-10-16 15:27)
