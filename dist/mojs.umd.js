@@ -1,4 +1,8 @@
-'use strict';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global.mojs = factory());
+}(this, (function () { 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
   return typeof obj;
@@ -10050,4 +10054,6 @@ mojs$1.CustomShape = mojs$1.shapesMap.custom;
 mojs$1.Transit = mojs$1.Shape;
 mojs$1.Swirl = mojs$1.ShapeSwirl;
 
-module.exports = mojs$1;
+return mojs$1;
+
+})));

@@ -2150,7 +2150,7 @@ var indexOf = [].indexOf || function (item) {
  * Adopted from https://github.com/gre/bezier-easing
  */
 
-BezierEasing = function () {
+BezierEasing = function (global) {
   function BezierEasing(o) {
     this.vars();
     return this.generate;
@@ -2303,7 +2303,7 @@ BezierEasing = function () {
   };
 
   return BezierEasing;
-}();
+}(window);
 
 bezierEasing = new BezierEasing();
 
@@ -5072,9 +5072,6 @@ class Tuneable extends Thenable {
   }
 }
 
-const h$1 = require('./h');
-const Bit$1 = require('./shapes/bit');
-const shapesMap$1 = require('./shapes/shapesMap');
 // TODO
 //  - refactor
 //    - add setIfChanged to Module
@@ -5274,7 +5271,7 @@ class Shape extends Tuneable {
     if (p.isForce3d) {
       let name = 'backface-visibility';
       style[`${ name }`] = 'hidden';
-      style[`${ h$1.prefix.css }${ name }`] = 'hidden';
+      style[`${ h.prefix.css }${ name }`] = 'hidden';
     }
     // }
   }
@@ -5351,13 +5348,13 @@ class Shape extends Tuneable {
 
       if (isTranslate || isScale || isRotate) {
         var transform = this._fillTransform();
-        style[`${ h$1.prefix.css }transform`] = transform;
+        style[`${ h.prefix.css }transform`] = transform;
         style['transform'] = transform;
       }
 
       if (this._isPropChanged('origin') || this._deltas['origin']) {
         var origin = this._fillOrigin();
-        style[`${ h$1.prefix.css }transform-origin`] = origin;
+        style[`${ h.prefix.css }transform-origin`] = origin;
         style['transform-origin'] = origin;
       }
     }
@@ -5484,7 +5481,7 @@ class Shape extends Tuneable {
 
     var p = this._props;
     // get shape's class
-    var Shape = shapesMap$1.getShape(this._props.shape);
+    var Shape = shapesMap.getShape(this._props.shape);
     // create `_shape` module
     this.shapeModule = new Shape({
       width: p.shapeWidth,
@@ -6341,7 +6338,6 @@ class MainSwirl extends ChildSwirl {
 Burst.ChildSwirl = ChildSwirl;
 Burst.MainSwirl = MainSwirl;
 
-const h$3 = require('../h');
 class Delta {
 
   constructor(o = {}) {
@@ -6542,9 +6538,6 @@ class Delta {
 //   }
 // });
 
-
-const easing$2 = require('../easing/easing');
-const h$2 = require('../h');
 // get tween properties
 const obj$1 = {};
 Tween.prototype._declareDefaults.call(obj$1);
@@ -6796,9 +6789,9 @@ class Deltas {
     @returns {Boolean}
   */
   _isDelta(optionsValue) {
-    var isObject = h$2.isObject(optionsValue);
+    var isObject = h.isObject(optionsValue);
     isObject = isObject && !optionsValue.unit;
-    return !(!isObject || h$2.isArray(optionsValue) || h$2.isDOM(optionsValue));
+    return !(!isObject || h.isArray(optionsValue) || h.isDOM(optionsValue));
   }
   /*
     Method to parse color delta values.
@@ -6809,7 +6802,7 @@ class Deltas {
   */
   _parseColorDelta(key, value) {
     if (key === 'strokeLinecap') {
-      h$2.warn(`Sorry, stroke-linecap property is not animatable yet, using the start(#{start}) value instead`, value);
+      h.warn(`Sorry, stroke-linecap property is not animatable yet, using the start(#{start}) value instead`, value);
       return {};
     }
     const preParse = this._preparseDelta(value);
@@ -6845,11 +6838,11 @@ class Deltas {
     const startArr = this._strToArr(preParse.start),
           endArr = this._strToArr(preParse.end);
 
-    h$2.normDashArrays(startArr, endArr);
+    h.normDashArrays(startArr, endArr);
 
     for (var i = 0; i < startArr.length; i++) {
       let end = endArr[i];
-      h$2.mergeUnits(startArr[i], end, key);
+      h.mergeUnits(startArr[i], end, key);
     }
 
     const delta = {
@@ -6857,7 +6850,7 @@ class Deltas {
       name: key,
       start: startArr,
       end: endArr,
-      delta: h$2.calcArrDelta(startArr, endArr),
+      delta: h.calcArrDelta(startArr, endArr),
       curve: preParse.curve
     };
 
@@ -6874,10 +6867,10 @@ class Deltas {
   _parseUnitDelta(key, value, index) {
     const preParse = this._preparseDelta(value);
 
-    const end = h$2.parseUnit(h$2.parseStringOption(preParse.end, index)),
-          start = h$2.parseUnit(h$2.parseStringOption(preParse.start, index));
+    const end = h.parseUnit(h.parseStringOption(preParse.end, index)),
+          start = h.parseUnit(h.parseStringOption(preParse.start, index));
 
-    h$2.mergeUnits(start, end, key);
+    h.mergeUnits(start, end, key);
     const delta = {
       type: 'unit',
       name: key,
@@ -6899,8 +6892,8 @@ class Deltas {
   _parseNumberDelta(key, value, index) {
     const preParse = this._preparseDelta(value);
 
-    const end = parseFloat(h$2.parseStringOption(preParse.end, index)),
-          start = parseFloat(h$2.parseStringOption(preParse.start, index));
+    const end = parseFloat(h.parseStringOption(preParse.end, index)),
+          start = parseFloat(h.parseStringOption(preParse.start, index));
 
     const delta = {
       type: 'number',
@@ -6927,7 +6920,7 @@ class Deltas {
     // parse curve if exist
     let curve = value.curve;
     if (curve != null) {
-      curve = easing$2.parseEasing(curve);
+      curve = easing.parseEasing(curve);
       curve._parent = this;
     }
     delete value.curve;
@@ -6971,8 +6964,8 @@ class Deltas {
       // shorthand color name
       if (!isRgb) {
         if (!this._shortColors[color]) {
-          h$2.div.style.color = color;
-          rgbColor = h$2.computedStyle(h$2.div).color;
+          h.div.style.color = color;
+          rgbColor = h.computedStyle(h.div).color;
         } else {
           rgbColor = this._shortColors[color];
         }
@@ -7005,12 +6998,12 @@ class Deltas {
     const arr = [];
     // plain number
     if (typeof string === 'number' && !isNaN(string)) {
-      arr.push(h$2.parseUnit(string));
+      arr.push(h.parseUnit(string));
       return arr;
     }
     // string array
     string.trim().split(/\s+/gim).forEach(str => {
-      arr.push(h$2.parseUnit(h$2.parseIfRand(str)));
+      arr.push(h.parseUnit(h.parseIfRand(str)));
     });
     return arr;
   }
@@ -8601,3 +8594,5 @@ mojs$1.CustomShape = mojs$1.shapesMap.custom;
 // module alias
 mojs$1.Transit = mojs$1.Shape;
 mojs$1.Swirl = mojs$1.ShapeSwirl;
+
+export default mojs$1;
