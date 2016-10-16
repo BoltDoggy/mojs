@@ -3,7 +3,7 @@ lib:
   ✔ h @done (16-10-16 15:26)
   ✔ html @done (16-10-16 15:26)
   ✔ module @done (16-10-16 15:26)
-  ☐ mojs/index
+  ✔ mojs/index @done (16-10-16 16:18)
   ✔ motion-path @done (16-10-16 15:26)
   ✔ shape-swirl @done (16-10-16 15:26)
   ✔ shape @done (16-10-16 15:26)
@@ -33,7 +33,7 @@ lib:
     ✔ equal @done (16-10-16 16:07)
     ✔ line @done (16-10-16 16:09)
     ✔ polygon @done (16-10-16 16:10)
-    ☐ react
+    ✔ react @done (16-10-16 16:17)
     ✔ shapesMap @done (16-10-16 16:14)
     ✔ zigzag @done (16-10-16 16:15)
   tween:
