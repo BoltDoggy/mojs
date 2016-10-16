@@ -18,24 +18,24 @@ lib:
   easing:
     ✔ approximate @done (16-10-16 15:35)
     ✔ bezier-easing @done (16-10-16 15:26)
-    ☐ easing
-    ☐ mix
+    ✔ easing @done (16-10-16 16:00)
+    ✔ mix @done (16-10-16 16:01)
     ✔ path-easing @done (16-10-16 15:36)
   polyfills:
     ✔ performance @done (16-10-16 15:34)
     ✔ raf @done (16-10-16 15:34)
   shapes:
     ✔ bit @done (16-10-16 15:38)
-    ☐ circle
-    ☐ cross
+    ✔ circle @done (16-10-16 16:04)
+    ✔ cross @done (16-10-16 16:05)
     ✔ curve @done (16-10-16 15:38)
     ✔ custom @done (16-10-16 15:38)
-    ☐ equal
-    ☐ line
-    ☐ polygon
+    ✔ equal @done (16-10-16 16:07)
+    ✔ line @done (16-10-16 16:09)
+    ✔ polygon @done (16-10-16 16:10)
     ☐ react
-    ☐ shapesMap
-    ☐ zigzag
+    ✔ shapesMap @done (16-10-16 16:14)
+    ✔ zigzag @done (16-10-16 16:15)
   tween:
     ✔ timeline @done (16-10-16 15:26)
     ✔ tween @done (16-10-16 15:26)
