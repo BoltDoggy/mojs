@@ -2,8 +2,6 @@
 
 > My module description
 
-<iframe width="100%" height="300" src="//jsfiddle.net/nnrmzL2a/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
 ## Install
 
 ```
